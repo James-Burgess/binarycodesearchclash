@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>Rank</td>
+        <td>Name</td>
+        <td>Time</td>
+        <td>Language</td>
+    </tr>
+    </thead>
+    {% for result in results %}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{result.user}}</td>
+        <td>{{result.time if result.success else 'FAILED'}}</td>
+        <td>{{result.language}}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+
+
+</body>
+</html>
