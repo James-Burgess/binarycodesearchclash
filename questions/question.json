@@ -1,0 +1,16 @@
+{
+	"name": "Title of question",
+	"description": "Question description",
+	"questions": [{
+		"input": [1, 2],
+		"answer": 3
+	}, {
+		"input": [4, 4],
+		"answer": 8
+	}],
+	"large_question": {
+		"input": [9999, 9999],
+		"answer": 19998
+	}
+}
+

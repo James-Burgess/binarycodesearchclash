@@ -7,11 +7,10 @@ Fight to be on top of the leaderboard.
 - Start the server with `uvicorn api:app --host 0.0.0.0 --reload`
 
 ## Adding a test
-- Copy the example `add.json` in `questoions/`
+- Copy the example `add.json` in `questions/`
 
 ## Adding a runtime
 - Create a docker runtime
-- Create a `soln.lang` and matching `lang_soln.jinja`
+- Create a `soln.lang` and matching `lang_soln.jinja` in `/solvers`
 - add the extension mapping in `api.py`
 - add the template solution to the js map in `templates/question.html`
-
