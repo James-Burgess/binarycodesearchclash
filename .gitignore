@@ -109,6 +109,6 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm
-db.sqlite3
+db/db.sqlite3
 __pycache__/
 .idea/

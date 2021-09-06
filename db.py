@@ -2,7 +2,7 @@ import sqlalchemy
 import databases
 
 
-DATABASE_URL = "sqlite:///./db.sqlite3"
+DATABASE_URL = "sqlite:///./db/db.sqlite3"
 metadata = sqlalchemy.MetaData()
 
 

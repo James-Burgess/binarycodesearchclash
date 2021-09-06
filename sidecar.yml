@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CADDY_INGRESS_NETWORKS=devnet
+    networks:
+      - devnet
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /datadrive/caddy:/data
+    restart: unless-stopped
+
+
+networks:
+  devnet:
+    external: true
