@@ -2,57 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>question</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dark.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-    <style>
-        .editor {
-            background: #222;
-            border-radius: 6px;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-            font-family: "Source Code Pro", monospace;
-            font-size: 14px;
-            font-weight: 400;
-            min-height: 340px;
-            letter-spacing: normal;
-            line-height: 20px;
-            padding: 10px;
-            tab-size: 4;
-        }
-    </style>
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
 </head>
 <body>
-<h1>{{ question.name }}</h1>
-<p>{{ question.description }}</p>
-<h3>Test questions</h3>
-{% for test in question.questions %}
-<h4>Test {{ loop.index }}</h4>
-<p>INPUT: {{ test.input }}</p>
-<p>ANSWER: {{ test.answer }}</p>
-{% endfor %}
-
-
-<form id="form" onsumbit="event.preventDefault()">
-    <input type="text" id="username" name="username" placeholder="username">
-    <select name="language" id="language" onchange="updateCode()">
-      <option value="python">Python3</option>
-      <option value="javascript">Javascript</option>
-    </select>
-<!--    <textarea id="code" name="code" rows="4" cols="50">-->
-<!--class UserSolution(Soln):-->
-<!--    def solve(self, a, b):-->
-<!--        return "answer"-->
-<!--    </textarea>-->
-    <div class="editor">
+<div class="question">
+    <h1>{{ question.name }}</h1>
+    <p id="question-text">{{ question.description }}</p>
+    <h3>Test questions</h3>
+    {% for test in question.questions %}
+    <div class="test-text">
+        <h4>Test {{ loop.index }}</h4>
+        <p>INPUT: <br> {% for inp in test.input %} {{inp}}{{ ", " if not loop.last else "" }} {% endfor %}</p>
+        <p>ANSWER: <br>{{ test.answer }}</p>
     </div>
-
-    <button onclick="testCode(event)">Test</button>
-    <button onclick="submitCode(event)">Submit</button>
-</form>
-<div id="output">
-
+    {% endfor %}
 
 </div>
+
+<div class="answer">
+    <form id="form" onsumbit="event.preventDefault()">
+
+
+        <input type="text" id="username" name="username" hidden>
+        <select name="language" id="language" onchange="updateCode()">
+            <option value="python">Python3</option>
+            <option value="javascript">Javascript</option>
+        </select>
+
+        <button onclick="testCode(event)" class="btn draw-border run-btn code-btn">Run code</button>
+        <div class="editor">
+        </div>
+        <button onclick="submitCode(event)" class="btn draw-border code-btn">Submit solution</button>
+
+
+    </form>
+
+    <div id="output" class="output">></div>
+</div>
+
+
+
 
 <script type="module">
   import {CodeJar} from "https://cdn.jsdelivr.net/npm/@medv/codejar@1.0.6/codejar.js"
@@ -90,8 +86,13 @@
   window.jar = jar
 </script>
 <script>
+  let questionText = document.querySelector('#question-text')
+  let converter = new showdown.Converter()
+  let converted = converter.makeHtml(questionText.innerHTML);
+  console.log(converted)
+  questionText.innerHTML = converted
 
-    function getData(){
+  function getData(){
         let elements = document.querySelector('#form').elements
         let obj = {};
         for(let i = 0 ; i < elements.length ; i++){

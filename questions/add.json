@@ -1,6 +1,6 @@
 {
-	"name": "add numbers",
-	"description": "add the two inputs together",
+	"name": "Add numbers",
+	"description": "Return the sum of the two inputs, a and b (add the two inputs together)",
 	"questions": [{
 		"input": [1, 2],
 		"answer": 3

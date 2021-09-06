@@ -1,0 +1,15 @@
+{
+	"name": "River valleys",
+	"description": "You are given an array of Integers that represent the topology of some land, from the array, calculate the amount of water that could be held by the land. \n \n#### For example: \n Given the array: \n\n `[5,1,5,1,6]` \n\n There are two valleys that can be filled with water, the second and fourth elements. \n those elements can each hold 4 units of water. \n\n `4 + 4 = 8` \n\n Note how the 6 is not counted as the opposite wall is lower.",
+	"questions": [{
+		"input": [[5, 1, 5, 1, 6]],
+		"answer": 8
+	}, {
+		"input": [[5, 1, 1, 4, 5, 2]],
+		"answer": 9
+	}],
+	"large_question": {
+		"input": [[5, 1, 1, 4, 5, 2, 9]],
+		"answer": 12
+	}
+}

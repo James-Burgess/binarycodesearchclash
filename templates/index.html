@@ -2,10 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
     <title>Speedy</title>
 </head>
 <body>
-Write fast code!
-<a href="/question/add/">add</a>
+<section class="home">
+    <h1>Write fast code!</h1>
+
+    <p>Solve the problems and get ranked by efficiency!</p>
+    <ol>
+        <li>
+            <a href="/question/add/">Add numbers (demo)</a>
+        </li>
+        <li>
+            <a href="/question/river_valley/">River Valley</a>
+        </li>
+    </ol>
+</section>
 </body>
 </html>
