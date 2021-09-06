@@ -43,7 +43,6 @@
 
 
     </form>
-
     <div id="output" class="output">></div>
 </div>
 
@@ -132,6 +131,9 @@
     function testCode(e){
         e.preventDefault();
         const obj = getData();
+        let output = document.querySelector('#output')
+
+        output.innerHTML = `<div class="loader"></div>`
 
         fetch('test/', {
             method: 'post',
@@ -147,13 +149,15 @@
             for (let line of r.STDOUT) {
                 html += `<p>${line}</p>`
             }
-            document.querySelector('#output').innerHTML = html
+            output.innerHTML = html
         })
         .catch(e => alert(e))
     }
     function submitCode(e){
         e.preventDefault();
-                const obj = getData();
+        const obj = getData();
+        let output = document.querySelector('#output')
+        output.innerHTML = `<div class="loader"></div>`
 
         fetch('submit/', {
             method: 'post',
