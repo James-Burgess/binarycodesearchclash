@@ -47,6 +47,12 @@
     <div id="output" class="output">></div>
 </div>
 
+<div id="user-modal" class="modal">
+    <div class="modal-content">
+        <h1>Enter username to continue:</h1>
+        <input type="text" id="username-input"/><button class="draw-border btn" onclick="saveUsername()">Submit</button>
+    </div>
+</div>
 
 
 
@@ -91,6 +97,26 @@
   let converted = converter.makeHtml(questionText.innerHTML);
   console.log(converted)
   questionText.innerHTML = converted
+
+  let user = localStorage.getItem("username")
+  if (!user) {
+    let modal = document.getElementById("user-modal");
+    modal.style.display = "block";
+  } else {
+    document.querySelector('#username').value = user
+  }
+
+  function saveUsername() {
+   let name = document.querySelector('#username-input').value
+
+   if (name) {
+     document.querySelector('#username').value = name
+     localStorage.setItem("username", name)
+     let modal = document.getElementById("user-modal");
+     modal.style.display = "none";
+   }
+  }
+
 
   function getData(){
         let elements = document.querySelector('#form').elements

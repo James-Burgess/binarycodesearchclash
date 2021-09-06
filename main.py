@@ -36,6 +36,7 @@ def run(question_name, user_input, lang):
         test = f.read().replace('{{ user_soln }}', user_input)
 
     with NamedTemporaryFile('w+', suffix=lang_suffix) as f:
+        print(f"running code: {test}")
         f.write(test)
         f.seek(0)
         print(f.name)
