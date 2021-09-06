@@ -29,7 +29,7 @@ class Soln {
 
   time() {
     let startTime = process.hrtime();
-    for (let i = 0; i <= 100000; i++){
+    for (let i = 0; i <= 10000; i++){
         this.solve(this.largeQuestion.input)
     }
     let elapsedSeconds = parseHrtimeToSeconds(process.hrtime(startTime));

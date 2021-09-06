@@ -27,7 +27,7 @@ class Soln:
         params = LARGE_QUESTION.get("input")
         answer = LARGE_QUESTION.get("answer")
         if self.solve(*params) == answer:
-            print(timeit.timeit(lambda: self.solve(*params), number=100000))
+            print(timeit.timeit(lambda: self.solve(*params), number=10000))
 
 
 {{ user_soln }}
