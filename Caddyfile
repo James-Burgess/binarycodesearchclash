@@ -2,6 +2,6 @@
     email dev@jimmyb.co.za
 }
 
-superduperfastcode.club {
+supderduperfastcode.club {
     reverse_proxy * http://127.0.0.1:8000
 }
