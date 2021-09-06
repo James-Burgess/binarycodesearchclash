@@ -38,6 +38,7 @@ def run(question_name, user_input, lang):
     with NamedTemporaryFile('w+', suffix=lang_suffix) as f:
         f.write(test)
         f.seek(0)
+        print(f.name)
         question = f"-v {getcwd()}/questions/{question_name}.json:/app/question.json"
         soln = f"-v {f.name}:/app/run{lang_suffix}"
         call = f"{lang}_runtime run{lang_suffix}"
